@@ -52,8 +52,7 @@ import java.util.Locale;
 
 @Model(
         adaptables = {SlingHttpServletRequest.class},
-        adapters = {Config.class},
-        cache = true
+        adapters = {Config.class}
 )
 public class ConfigImpl implements Config {
     private static final Logger log = LoggerFactory.getLogger(ConfigImpl.class);
@@ -84,8 +83,9 @@ public class ConfigImpl implements Config {
     // Asset Details
     private static final String PN_DEFAULT_ASSET_DETAILS_PATH = "config/asset-details/defaultPath";
     private static final String PN_ASSET_DETAILS_SELECTOR = "config/asset-details/selector";
-    private static final String PN_PLACEHOLDER_ASSET_PATH = "config/asset-details/placeholderPath";
-    private static final String DEFAULT_PLACEHOLDER_ASSET_PATH = "/apps/asset-share-commons/resources/placeholder.png";
+    public static final String PN_PLACEHOLDER_ASSET_PATH = "config/asset-details/placeholderPath";
+    public static final String PN_ASSET_REFERENCE_BY_ID = "config/asset-details/assetReferenceById";
+    public static final String DEFAULT_PLACEHOLDER_ASSET_PATH = "/apps/asset-share-commons/resources/placeholder.png";
 
     @Self
     @Required
@@ -213,6 +213,12 @@ public class ConfigImpl implements Config {
     public String getAssetDetailsSelector() {
         return properties.get(PN_ASSET_DETAILS_SELECTOR, AlwaysUseDefaultSelectorImpl.ID);
     }
+
+    @Override
+    public boolean getAssetDetailReferenceById()  {
+        return properties.get(PN_ASSET_REFERENCE_BY_ID, false);
+    }
+
 
     @Override
     public String getAssetDetailsPath() {
