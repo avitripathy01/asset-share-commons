@@ -4,6 +4,60 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [v1.6.10]
+
+### Fixed
+- 0259: Fixed issue with the Statistics component misreporting how many more results are available.
+- 0301: Files having special character in the filename. Download, Share and Add to Cart do not work.
+- 0307: Fixed issue with Details page Image component's fallback is not used for non-image assets. 
+- 0308: Fixed issue where unsupported (by the browser) image asset types (ex. DFX) are used for image display in browser (thumbs/preview) instead of placeholder.
+- 0311: Empty metadata fields fail to hide or display emptyText
+
+### Changes
+- 0294: Changes (JS) AssetShare.Navigation.goToTop(..) to avoid using window.location.hash which pushes state to browser's history and prevents use of the browser's back button.
+
+## [v1.6.8]
+
+### Fixed
+- 0283: AssetDetails404Servlet uses sendError(..) to set 404 status, allowing it to work with Sling Error Handlers.
+- 0285: Modal DOM elements are now removed when then modal is hidden.
+- 0288: AssetDetails404Servlet handles UUID based asset details pages.
+
+### Changed
+- 0290: Modals emit JS event when they are shown.
+
+## [v1.6.6]
+
+### Fixed
+- 0275: Revert inclusion of Core Components 2.1.0 as it breaks compatability with AEM 6.3 SP1
+- 0276: Corrected resource injection strategy in SearchConfigImpl that resulted in the model being instantiatable on 6.3.x
+
+### Fixed
+- 0275: Resolves issue with offset not being set.
+- 0255: Removed need for "generic" Sort By and Sort Direction labels; added intelligence to get default values from Search Results 
+## [v1.6.4]
+
+### Fixed
+- 0260: Resolves issue with offset not being set.
+- 0255: Removed need for "generic" Sort By and Sort Direction labels; added intelligence to get default values from Search Results component.
+- 0254: HTTP query param sort parameters are not reflected in Sort component
+- 0249: Fixed issue when Search Statistics (or an other component that uses Search model) is placed before the Search components, resutling in 0 results.
+- 0248: Issue with HTTP parameter QB groups and server-side provided (group_3 would mix in with server-side paths)
+- 0227: Sites editor is missing workflow status information
+- 0237: Fixes issue with ContextHub being unloaded after a Form submissions via modals.
+- 0240: Fixed issue with submitted date-range search values lagging behind actual value by one submission.
+- 0231: metadataFieldTypes does not filter data source for Date Range and Tag Filters
+- 0192: Updated included Core Components to v2.1.0
+
+## [v1.6.2]
+
+### Changed
+- 0069: Fixes issue with request URI being too long for modals by switching from GET to POST
+
+### Fixed
+- 0218: Fixes issue with Action Buttons' Download not working for Licensed assets when Licensing is disabled.
+- 0221: Fixes logic for Dynamic Media download modal to display a dropdown when image presets are set 
+
 ## [v1.6.0]
 
 ### Added

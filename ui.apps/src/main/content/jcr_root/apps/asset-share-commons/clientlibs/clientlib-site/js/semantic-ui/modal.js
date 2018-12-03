@@ -66,6 +66,7 @@ AssetShare.SemanticUI.Modal = (function ($, ns) {
         var index = tracker.indexOf(id);
         if (index !== -1) {
             tracker.splice(index, 1);
+            ns.Elements.remove(id);
         }
     }
 
@@ -79,7 +80,7 @@ AssetShare.SemanticUI.Modal = (function ($, ns) {
         }
 
         modals.forEach(function (modal) {
-            $.get(modal.url, modal.data, function (htmlResponse) {
+            $.post(modal.url, modal.data, function (htmlResponse) {
 
                 modal.options = modal.options || {};
                 modal.options.show = modal.options.show || function (modal) {
@@ -95,6 +96,7 @@ AssetShare.SemanticUI.Modal = (function ($, ns) {
                             if (isPreviewMode()) {
                                 onShowModalInPreviewMode(this);
                             }
+                            $("body").trigger(ns.Events.MODAL_SHOWN);
                         },
                         onHidden: function() {
                             removeFromOpenModals(modal.id);
